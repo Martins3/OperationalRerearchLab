@@ -1,0 +1,5 @@
+test file is  ./HEA_DSJC125.1.col.txt
+begin to make graph
+vertex num 0
+edge num 6390272
+init graph data structure finished !

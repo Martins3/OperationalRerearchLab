@@ -1,0 +1,274 @@
+test file is  ./DSJC1000.1.col.txt
+begin to make graph
+vertex num 1000
+edge num 49629
+init graph data structure finished !
+initialization over, begin tabu search
+iter 10000 conflict 42
+iter 20000 conflict 26
+iter 30000 conflict 24
+iter 40000 conflict 34
+iter 50000 conflict 36
+iter 60000 conflict 32
+iter 70000 conflict 18
+iter 80000 conflict 10
+iter 90000 conflict 10
+iter 100000 conflict 4
+iter 110000 conflict 4
+iter 120000 conflict 6
+iter 130000 conflict 8
+iter 140000 conflict 8
+iter 150000 conflict 6
+iter 160000 conflict 2
+iter 170000 conflict 6
+iter 180000 conflict 4
+iter 190000 conflict 6
+iter 200000 conflict 8
+iter 210000 conflict 6
+iter 220000 conflict 10
+iter 230000 conflict 6
+iter 240000 conflict 8
+iter 250000 conflict 10
+iter 260000 conflict 10
+iter 270000 conflict 8
+iter 280000 conflict 10
+iter 290000 conflict 12
+iter 300000 conflict 12
+iter 310000 conflict 12
+iter 320000 conflict 12
+iter 330000 conflict 12
+iter 340000 conflict 10
+iter 350000 conflict 10
+iter 360000 conflict 14
+iter 370000 conflict 10
+iter 380000 conflict 6
+iter 390000 conflict 12
+iter 400000 conflict 8
+iter 410000 conflict 10
+iter 420000 conflict 6
+iter 430000 conflict 12
+iter 440000 conflict 8
+iter 450000 conflict 12
+iter 460000 conflict 10
+iter 470000 conflict 8
+iter 480000 conflict 12
+iter 490000 conflict 12
+iter 500000 conflict 10
+iter 510000 conflict 8
+iter 520000 conflict 8
+iter 530000 conflict 14
+iter 540000 conflict 10
+iter 550000 conflict 8
+iter 560000 conflict 10
+iter 570000 conflict 10
+iter 580000 conflict 10
+iter 590000 conflict 14
+iter 600000 conflict 12
+iter 610000 conflict 34
+iter 620000 conflict 20
+iter 630000 conflict 18
+iter 640000 conflict 20
+iter 650000 conflict 24
+iter 660000 conflict 18
+iter 670000 conflict 14
+iter 680000 conflict 20
+iter 690000 conflict 26
+iter 700000 conflict 14
+iter 710000 conflict 14
+iter 720000 conflict 18
+iter 730000 conflict 18
+iter 740000 conflict 20
+iter 750000 conflict 22
+iter 760000 conflict 14
+iter 770000 conflict 14
+iter 780000 conflict 10
+iter 790000 conflict 10
+iter 800000 conflict 16
+iter 810000 conflict 12
+iter 820000 conflict 10
+iter 830000 conflict 16
+iter 840000 conflict 22
+iter 850000 conflict 10
+iter 860000 conflict 10
+iter 870000 conflict 14
+iter 880000 conflict 10
+iter 890000 conflict 10
+iter 900000 conflict 12
+iter 910000 conflict 10
+iter 920000 conflict 10
+iter 930000 conflict 16
+iter 940000 conflict 12
+iter 950000 conflict 10
+iter 960000 conflict 8
+iter 970000 conflict 10
+iter 980000 conflict 10
+iter 990000 conflict 16
+iter 1000000 conflict 12
+iter 1010000 conflict 14
+iter 1020000 conflict 6
+iter 1030000 conflict 8
+iter 1040000 conflict 8
+iter 1050000 conflict 10
+iter 1060000 conflict 8
+iter 1070000 conflict 12
+iter 1080000 conflict 10
+iter 1090000 conflict 10
+iter 1100000 conflict 10
+iter 1110000 conflict 8
+iter 1120000 conflict 12
+iter 1130000 conflict 8
+iter 1140000 conflict 10
+iter 1150000 conflict 16
+iter 1160000 conflict 8
+iter 1170000 conflict 10
+iter 1180000 conflict 8
+iter 1190000 conflict 4
+iter 1200000 conflict 16
+iter 1210000 conflict 8
+iter 1220000 conflict 8
+iter 1230000 conflict 8
+iter 1240000 conflict 8
+iter 1250000 conflict 10
+iter 1260000 conflict 8
+iter 1270000 conflict 10
+iter 1280000 conflict 8
+iter 1290000 conflict 10
+iter 1300000 conflict 8
+iter 1310000 conflict 8
+iter 1320000 conflict 12
+iter 1330000 conflict 8
+iter 1340000 conflict 8
+iter 1350000 conflict 10
+iter 1360000 conflict 10
+iter 1370000 conflict 10
+iter 1380000 conflict 12
+iter 1390000 conflict 12
+iter 1400000 conflict 8
+iter 1410000 conflict 8
+iter 1420000 conflict 12
+iter 1430000 conflict 10
+iter 1440000 conflict 8
+iter 1450000 conflict 12
+iter 1460000 conflict 10
+iter 1470000 conflict 6
+iter 1480000 conflict 4
+iter 1490000 conflict 6
+iter 1500000 conflict 10
+iter 1510000 conflict 8
+iter 1520000 conflict 6
+iter 1530000 conflict 10
+iter 1540000 conflict 8
+iter 1550000 conflict 10
+iter 1560000 conflict 10
+iter 1570000 conflict 12
+iter 1580000 conflict 8
+iter 1590000 conflict 12
+iter 1600000 conflict 14
+iter 1610000 conflict 8
+iter 1620000 conflict 16
+iter 1630000 conflict 8
+iter 1640000 conflict 10
+iter 1650000 conflict 6
+iter 1660000 conflict 14
+K is 21
+the ans is
+0 19 6 1 17 18 13 19 8 9 2 
+17 1 5 12 5 18 0 18 4 15 
+3 1 11 20 19 1 7 5 8 9 
+5 18 14 20 7 16 17 1 20 4 
+11 7 2 14 6 4 9 8 1 20 
+9 10 2 16 19 0 11 15 18 10 
+6 14 1 9 17 16 5 14 9 17 
+9 16 12 5 14 17 13 8 8 17 
+17 20 10 3 11 0 13 0 7 0 
+0 9 9 16 4 0 10 2 3 6 
+12 4 16 4 3 1 3 15 16 13 
+12 8 12 4 17 9 9 17 14 17 
+8 19 20 3 16 19 4 14 14 0 
+0 3 6 19 18 14 2 14 1 13 
+3 4 17 20 3 19 9 0 4 19 
+8 11 2 9 4 11 18 18 0 13 
+3 1 12 4 17 5 15 13 17 18 
+15 18 9 20 14 18 3 16 8 20 
+16 20 0 2 18 11 9 18 13 10 
+20 7 14 14 2 5 9 3 8 16 
+9 17 11 16 0 13 9 15 19 16 
+15 6 4 7 15 2 12 4 7 5 
+19 3 8 4 14 17 12 17 14 15 
+14 12 12 16 13 1 11 12 9 8 
+20 2 1 16 12 15 3 19 4 18 
+6 1 16 17 8 7 10 11 17 20 
+3 6 0 8 14 14 14 19 8 9 
+0 1 2 17 0 16 18 19 3 10 
+13 5 20 13 4 19 13 2 9 4 
+15 12 3 0 10 2 12 8 3 7 
+2 12 11 3 14 13 20 5 20 14 
+12 13 6 8 16 0 10 9 15 4 
+15 19 17 4 14 16 15 20 2 2 
+8 11 12 17 11 6 8 18 10 14 
+10 1 11 1 7 8 13 13 12 16 
+10 10 14 9 16 13 5 15 5 18 
+19 3 5 3 20 12 5 17 1 1 
+7 8 11 6 2 8 11 19 15 5 
+10 9 19 6 12 12 13 20 11 15 
+16 4 7 16 13 9 18 6 9 10 
+19 20 0 3 7 1 1 9 20 12 
+1 18 16 8 13 9 7 10 12 11 
+17 17 17 19 1 3 2 18 0 12 
+1 2 6 4 10 14 6 1 2 8 
+9 8 9 14 9 3 11 8 19 19 
+20 10 18 0 13 1 18 11 12 0 
+18 3 6 7 14 12 3 5 1 10 
+6 10 8 17 15 14 11 10 11 13 
+3 7 10 12 7 3 1 0 16 1 
+5 11 15 15 9 8 7 1 19 19 
+6 10 8 19 19 20 18 4 17 2 
+2 2 20 17 2 17 16 4 2 10 
+6 2 18 8 7 7 18 2 6 17 
+2 3 3 13 19 15 6 12 10 5 
+9 4 7 18 20 1 0 3 19 15 
+8 7 0 20 0 2 18 4 14 16 
+2 5 16 20 7 5 10 0 10 10 
+16 15 11 15 1 7 9 0 18 7 
+20 3 14 16 18 8 8 17 13 18 
+2 2 3 12 16 18 18 0 7 12 
+15 12 3 7 12 6 2 7 20 17 
+12 15 1 2 19 2 4 8 13 5 
+18 14 8 18 2 20 14 14 3 16 
+17 6 0 16 8 0 4 15 18 11 
+4 13 5 4 6 19 11 2 9 4 
+6 9 20 3 0 19 11 20 2 11 
+0 3 16 4 2 11 13 10 18 6 
+6 2 17 17 18 5 8 10 7 1 
+12 12 16 18 9 19 19 5 8 20 
+6 7 13 7 6 8 6 3 1 6 
+20 15 10 15 9 14 0 17 20 6 
+2 19 8 0 9 14 1 13 6 8 
+9 0 3 17 6 0 15 12 4 18 
+15 11 1 2 12 5 13 15 8 13 
+6 13 6 10 13 11 0 13 10 5 
+16 14 11 9 6 5 18 5 8 13 
+6 10 17 18 2 1 20 5 14 2 
+16 16 7 9 12 4 12 0 2 20 
+5 10 9 3 15 18 5 5 11 5 
+5 15 10 15 17 7 8 6 17 7 
+19 18 9 6 19 15 8 15 4 9 
+17 6 11 9 8 8 2 12 8 2 
+16 6 13 8 10 16 20 9 17 14 
+12 5 10 7 15 6 4 12 4 10 
+14 8 18 12 3 15 12 16 10 19 
+10 14 19 10 10 6 7 13 12 7 
+4 14 3 20 0 19 0 19 20 11 
+6 10 14 7 16 20 20 1 4 3 
+4 0 5 20 20 3 11 19 15 0 
+1 11 7 3 0 19 11 17 7 14 
+12 3 20 19 10 2 6 15 10 5 
+8 13 11 20 5 10 9 1 4 13 
+11 4 8 5 19 15 20 2 9 11 
+10 12 1 16 8 7 10 9 8 6 
+15 19 8 19 13 11 5 6 7 9 
+12 0 13 0 17 5 13 11 12 20 
+13 0 3 6 7 0 10 2 12 14 
+20 11 2 7 11 13 16 8 7 1 
+18 13 9 12 3 10 1 1 8 8 
+9 20 11 8 4 16 1 17 0 Time cost in seconds: 36.9668

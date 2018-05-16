@@ -1,0 +1,20 @@
+graph {
+    a[style = filled; color = red];
+    b[style = filled; color = green];
+    c[style = filled; color = blue];
+    d[style = filled; color = red];
+    e[style = filled; color = green];
+    f[style = filled; color = blue];
+    a -- b;
+    f -- c;
+    a -- c;
+    d -- c;
+    e -- c;
+    e -- a;
+    d -- e;
+    f -- b;
+    d -- f;
+    b -- c;
+    a -- d;
+    e -- b;
+}

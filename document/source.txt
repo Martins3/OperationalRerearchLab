@@ -1,0 +1,12 @@
+D. Cvijovic and J. Klinowski| "Taboo Search: An Approach to the Multiple Minima Problem"| Science| 1995.
+C–N. Fiechter| "A parallel tabu search algorithm for large traveling salesman problems"| Discrete Applied Mathematics| 1994.
+M. Gendreau| "2: An Introduction to Tabu Search"| in Handbook of Metaheuristics| pages 37–54| Springer| 2003.
+F. Glover| "Heuristics for integer programming using surrogate constraints"| Decision Sciences| 1977.
+F. Glover| "Future paths for integer programming and links to artificial intelligence"| Computers and Operations Research| 1986.
+F. Glover and C. McMillan| "The general employee scheduling problem: an integration of MS and AI"| Computers and Operations Research| 1986.
+F. Glover| "Tabu Search – Part I"| ORSA Journal on Computing| 1989.
+F. Glover| "Tabu Search – Part II"| ORSA Journal on Computing| 1990.
+F. Glover| "Tabu Search: A Tutorial"| Interfaces| 1990.
+F. Glover and E. Taillard| "A user's guide to tabu search"| Annals of Operations Research| 1993.
+F. W. Glover and M. Laguna| "Tabu Search"| Springer| 1998.
+J. Knox| "Tabu search performance on the symmetric traveling salesman problem"| Computers & Operations Research| 1994.
