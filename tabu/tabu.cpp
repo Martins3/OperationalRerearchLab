@@ -15,7 +15,7 @@ void Tabu::initialization(bool is_he, const vector<set<unsigned int> >& config){
     solutions = vector<unsigned int>(N + 1, 0);
     best_solution = vector<unsigned int>(N + 1, 0);
     tabu_tenure = vector<vector<unsigned int> >(N + 1, vector<unsigned int>(K, 0));
-    adjacent_color_table = vector<vector<unsigned int> >(N + 1, vector<unsigned int>(K, 0));
+    color_conflict_num = vector<vector<unsigned int> >(N + 1, vector<unsigned int>(K, 0));
     conflict_num = 0;
     min_conflict_num = 0;
 
@@ -34,13 +34,13 @@ void Tabu::initialization(bool is_he, const vector<set<unsigned int> >& config){
     for(unsigned int x = 1; x <= N; x++){
         for(int i = nodeHead[x]; i != -1; i = graph[i].head){
             int y = graph[i].y;
-            adjacent_color_table[x][solutions[y]] ++;
+            color_conflict_num[x][solutions[y]] ++;
         }
     }
 
 
     for(size_t i = 1; i <= N; i++){
-        conflict_num += adjacent_color_table[i][solutions[i]];
+        conflict_num += color_conflict_num[i][solutions[i]];
     }
     if(is_he){
         printf("after cross over, conflict %d\n", conflict_num);
@@ -108,12 +108,15 @@ void Tabu::tabu_search(const vector<set<unsigned int> >& config, int iter_time, 
 void Tabu::find_move(TabuMove& tabu_move, unsigned int iter){
     TabuMove tabu_best_move;
     TabuMove non_tabu_best_move;
+    // 询问所有的顶点
     for(int i = 1; i <= N; i++){
-        if(adjacent_color_table[i][solutions[i]] != 0){
+        // 顶点i的现在的冲突不为0
+        if(color_conflict_num[i][solutions[i]] != 0){
+            // 选择最佳的切换颜色
             for(int k = 0; k < K; k++){
                 if(k == solutions[i]) continue;
 
-                int delta = (int)adjacent_color_table[i][k] - (int)adjacent_color_table[i][solutions[i]];
+                int delta = (int)color_conflict_num[i][k] - (int)color_conflict_num[i][solutions[i]];
                 if(iter < tabu_tenure[i][k]){
                     if(delta < tabu_best_move.delta)
                         tabu_best_move = TabuMove(i, solutions[i], k, delta);
@@ -125,7 +128,6 @@ void Tabu::find_move(TabuMove& tabu_move, unsigned int iter){
         }
     }
 
-
     // when tabu is worse and non-tabu is better, use non-tabu
     bool is_aspiration = (tabu_best_move.delta < 0 && non_tabu_best_move.delta > 0);
     if(is_aspiration)
@@ -136,9 +138,9 @@ void Tabu::find_move(TabuMove& tabu_move, unsigned int iter){
 }
 
 void Tabu::make_move(TabuMove& tabu_move, unsigned int iter){
-    int u = tabu_move.u;
-    int vi = tabu_move.vi;
-    int vj = tabu_move.vj;
+    int u = tabu_move.vertex;
+    int vi = tabu_move.from;
+    int vj = tabu_move.to;
     int delta = tabu_move.delta;
 
     // change the color
@@ -152,12 +154,12 @@ void Tabu::make_move(TabuMove& tabu_move, unsigned int iter){
     }
     // update tabu tenure
     tabu_tenure[u][vi] = iter + conflict_num + (unsigned int)rand()%10;
-    // update the Adjacent_Color_Table;
+    // update the conflict_color_table;
     for(int i = nodeHead[u]; i != -1; i = graph[i].head){
         int y = graph[i].y;
-        assert(adjacent_color_table[y][vi]);
-        adjacent_color_table[y][vi] --;
-        adjacent_color_table[y][vj] ++;
+        assert(color_conflict_num[y][vi]);
+        color_conflict_num[y][vi] --;
+        color_conflict_num[y][vj] ++;
     }
 }
 
@@ -228,43 +230,46 @@ Tabu::Tabu(std::string data_version){
 }
 
 
-void Tabu::cross_over(vector<set<unsigned int> > config_one, vector<set<unsigned int> > config_two,
+void Tabu::cross_over(vector<set<unsigned int> > & solution_one, vector<set<unsigned int> > & solution_two,
     vector<set<unsigned int> >& offspring){
         int os_size = 0;
-        // make sure offspring is empty
+
+        // 对于所有的颜色
         for(size_t i = 0; i < K; i++){
             if(i % 2){
                 unsigned int max_v = 0;
                 int max_i = -1;
+                // 找到一个节点数最多的点
                 for(size_t j = 0; j < K; j++){
-                    const set<unsigned int> & s = config_one[j];
+                    const set<unsigned int> & s = solution_one[j];
                     if(s.size() > max_v){
                         max_v = s.size();
                         max_i = j;
                     }
                 }
-
+                // 如果没有，那么不要加入节点
                 if(max_i == -1){
                     offspring.push_back(set<unsigned int>());
                     continue;
                 }
-                set<unsigned int> purge = config_one[max_i];
+                set<unsigned int> & purge = solution_one[max_i];
                 os_size += purge.size();
                 offspring.push_back(purge);
+                // 其他颜色就不要包含这些选中的点了
                 for(unsigned int v:purge){
-                    for(set<unsigned int>& s : config_one){
+                    for(set<unsigned int>& s : solution_one){
                         s.erase(v);
                     }
-                    for(set<unsigned int>& s : config_two){
+                    for(set<unsigned int>& s : solution_two){
                         s.erase(v);
                     }
                 }
-                config_one[max_i].clear();
+                solution_one[max_i].clear();
             }else{
                 unsigned int max_v = 0;
                 int max_i = -1;
                 for(size_t j = 0; j < K; j++){
-                    const set<unsigned int> & s = config_two[j];
+                    const set<unsigned int> & s = solution_two[j];
                     if(s.size() > max_v){
                         max_v = s.size();
                         max_i = j;
@@ -276,14 +281,14 @@ void Tabu::cross_over(vector<set<unsigned int> > config_one, vector<set<unsigned
                     continue;
                 }
 
-                set<unsigned int> purge = config_two[max_i];
+                set<unsigned int> & purge = solution_two[max_i];
                 os_size += purge.size();
                 offspring.push_back(purge);
                 for(unsigned int v:purge){
-                    for(set<unsigned int>& s : config_one){
+                    for(set<unsigned int>& s : solution_one){
                         s.erase(v);
                     }
-                    for(set<unsigned int>& s : config_two){
+                    for(set<unsigned int>& s : solution_two){
                         s.erase(v);
                     }
                 }
@@ -292,10 +297,10 @@ void Tabu::cross_over(vector<set<unsigned int> > config_one, vector<set<unsigned
 
         // 将的conflg_one and config_two 剩余数值随机添加到其中
         set<unsigned int> residual;
-        for(const set<unsigned int> & s : config_one){
+        for(const set<unsigned int> & s : solution_one){
             residual.insert(s.begin(), s.end());
         }
-        for(const set<unsigned int> & s : config_two){
+        for(const set<unsigned int> & s : solution_two){
             residual.insert(s.begin(), s.end());
         }
         for(unsigned int num : residual){
@@ -331,13 +336,14 @@ void Tabu::hybrid_evolutionary(int K, bool load, int population_size){
         int s2 = (unsigned int)rand() % population_size;
         while(s1 == s2) s2 = (unsigned int)rand() % population_size;
 
+        // 使用 break_line 
         int break_line = 0;
         for(int  i = 0; i < population_size; i++){
             break_line = max(break_line, populations[i].conflict_num);
         }
 
         vector<set<unsigned int> > offspring;
-        cross_over(populations[s1].config, populations[s2].config, offspring);
+        cross_over(populations[s1].solution, populations[s2].solution, offspring);
         tabu_search(offspring, 50 * 10000, break_line);
 
 
@@ -367,7 +373,7 @@ void Tabu::hybrid_evolutionary(int K, bool load, int population_size){
     if(best_person == 0){
         printf("K is %d\n", K);
         vector<unsigned int> solution(N);
-        config_to_solution(populations[0].config, solution);
+        config_to_solution(populations[0].solution, solution);
         for(size_t i = 0; i < N; i++){
             printf("%d ", solutions[i]);
         }
@@ -400,9 +406,9 @@ void Tabu::print_runtime_ds() const{
     printf("\n");
 
     printf("adjacent color table\n");
-    for(size_t i = 0; i < adjacent_color_table.size(); i++){
-        for(size_t j = 0; j < adjacent_color_table[i].size(); j++){
-            printf("%u ", adjacent_color_table[i][j]);
+    for(size_t i = 0; i < color_conflict_num.size(); i++){
+        for(size_t j = 0; j < color_conflict_num[i].size(); j++){
+            printf("%u ", color_conflict_num[i][j]);
         }
         printf("\n");
     }
@@ -426,7 +432,7 @@ void Tabu::save_populations(){
     for(const Person & person : populations){
         file << person.conflict_num << " ";
         vector<unsigned int> sol = vector<unsigned int>(N + 1);
-        config_to_solution(person.config,  sol);
+        config_to_solution(person.solution,  sol);
         for(size_t i = 0; i < N; i++){
             file << sol[i] << " ";
         }
@@ -436,7 +442,7 @@ void Tabu::save_populations(){
 }
 
 void Tabu::load_populations(){
-    freopen("/home/martin/X-Brain/Notes/Clang/OnlineJudge/tabu/populations.txt", "r", stdin);
+    freopen("./populations.txt", "r", stdin);
     vector<unsigned int> sol;
     int conf;
     for(size_t i = 0; i < population_size; i++){

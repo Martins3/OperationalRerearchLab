@@ -29,7 +29,7 @@ int main(){
     Tabu tabu("1000.1");
     // tabu.tabu_search(21, 1000 * 10000);
 
-     tabu.hybrid_evolutionary(25, false, 5);
+    tabu.hybrid_evolutionary(25, false, 5);
     // tabu.hybrid_evolutionary(49, false, 5);
 
 
